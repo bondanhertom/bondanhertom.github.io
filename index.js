@@ -92,7 +92,7 @@ function appendTableData(data) {
     const deleteButton = document.createElement("button");
     deleteButton.textContent = 'Delete';
     deleteButton.classList.add("deleteButton");
-    deleteButton.setAttribute('id','deleteItem');
+    deleteButton.setAttribute('class','submit-btn');
     deleteButton.setAttribute("onclick", `deleteItem(${count})`);
     name.appendChild(nameText);
     persentase.appendChild(namePresentase);

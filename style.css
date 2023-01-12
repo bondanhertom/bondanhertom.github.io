@@ -4,8 +4,8 @@ body {
     color: #000;
 }
 
-body, input, button {
-    font-family: 'Space Grotesk', sans-serif;
+body, input, button, table {
+    font-family: 'Space Grotesk', sans-serif !important;
 }
 
 .container {
