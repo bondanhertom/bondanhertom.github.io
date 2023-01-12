@@ -71,9 +71,9 @@ document.getElementById('submitGejala').addEventListener("click", function() {
     appendTableData(data);
 })
 
-function deleteItem() {
-    let select = document.getElementById('tbody');
-    select.removeChild(select.lastChild);
+let count = 0;
+function deleteItem(currentIndex) {
+    document.getElementById(`tr-${currentIndex}`).remove();
 }
 
 function changeMessage(data) {
@@ -93,14 +93,16 @@ function appendTableData(data) {
     deleteButton.textContent = 'Delete';
     deleteButton.classList.add("deleteButton");
     deleteButton.setAttribute('id','deleteItem');
-    deleteButton.setAttribute("onclick","deleteItem()");
+    deleteButton.setAttribute("onclick", `deleteItem(${count})`);
     name.appendChild(nameText);
     persentase.appendChild(namePresentase);
     action.appendChild(deleteButton);
     tr.appendChild(name);
     tr.appendChild(persentase);
     tr.appendChild(action);
+    tr.setAttribute('id',`tr-${count}`);
     document.getElementById("tbody").appendChild(tr);
+    count++;
 }
 
 function input(name, listGejalaPasien, listGejalaCovid) {
