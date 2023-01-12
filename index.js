@@ -22,17 +22,75 @@
 // ];
 
 // list gejala covid
-let listGejalaCovid = ['gejala1', 'gejala2', 'gejala3'];
+let listGejalaCovid = [
+    'tenggorokan gatal',
+    'nyeri punggung',
+    'hidung pilek atau tersumbat',
+    'sakit kepala',
+    'bersin berlebih',
+    'banyak berkeringat di malam hari',
+    'badan pegal',
+    'anosmia',
+    'batuk kering',
+    'suara serak',
+    'nyeri otot'
+];
 
 // list gejala pasien
-let listGejalaPasien = 'gejala12,gejala2,gejala33';
+let listGejalaPasien = 'demam, batuk kering, pilek, sesak nafas';
 
-function cek(name, age, listGejalaPasien, listGejalaCovid) {
+document.getElementById('submitName').addEventListener("click", function() { 
+    let user = document.getElementById('name').value;
+    if (!user) {
+        alert("Tolong masukkan nama");
+    }
+    else {
+        document.getElementById('landingPage').style.display = 'none';
+        document.getElementById('secondPage').removeAttribute("style");
+        document.getElementById('greeting').innerText = `Hello, ${user}`;
+    }
+})
+
+document.getElementById('submitGejala').addEventListener("click", function() { 
+    let greeting = document.getElementById('greeting').innerText;
+    let username = '';
+    for (let i = 6; i < greeting.length; i++) {
+        username += greeting[i];
+    }
+    let gejala = document.getElementById('gejala').value;
+    if (!gejala) {
+        return alert("Tolong masukkan gejala");
+    }
+    // Get data
+    let data = input(username, gejala, listGejalaCovid, listGejalaCovid);
+
+    // Ubah message
+    document.getElementById('message').innerText = data[0].message;
+    document.getElementById('result').removeAttribute("style");
+    document.getElementById('result').style.marginTop = '10px';
+
+    // Buat table data
+    const tr = document.createElement("tr");
+    const name = document.createElement("td");
+    const nameText = document.createTextNode(data[0].name);
+    const persentase = document.createElement("td");
+    const namePresentase = document.createTextNode(`${data[0].persentase}%`);
+    const action = document.createElement("td");
+    const nameAction = document.createTextNode("Delete");
+    name.appendChild(nameText);
+    persentase.appendChild(namePresentase);
+    action.appendChild(nameAction);
+    tr.appendChild(name);
+    tr.appendChild(persentase);
+    tr.appendChild(action);
+    document.getElementById("tbody").appendChild(tr);
+})
+
+function input(name, listGejalaPasien, listGejalaCovid) {
     let output = [];
     let perOrang = {};
-    let gejalaPasien = listGejalaPasien.split(",");
+    let gejalaPasien = listGejalaPasien.split(", ");
     perOrang.name = name;
-    perOrang.age = age;
     perOrang.gejala = gejalaPasien;
     let count = 0;
     for (let i = 0; i < listGejalaCovid.length; i++) {
@@ -42,9 +100,18 @@ function cek(name, age, listGejalaPasien, listGejalaCovid) {
             }
         }
     }
-    let presentase = (count / listGejalaCovid.length) * 100;
-    perOrang.presentase = presentase;
+    let persentase = Math.floor((count / listGejalaCovid.length) * 100);
+    perOrang.persentase = persentase;
+    if (persentase <= 20) {
+        perOrang.message = 'Anda tidak perlu kedokter, dan jaga kesehatan';
+    } else if (persentase > 20 && persentase <= 75) {
+        perOrang.message =  'Anda tidak perlu kedokter tetapi anda harus banyak istirahat, minum air putih, dan jaga kesehatan';
+    } else {
+        perOrang.message =  'Anda terindikasi Covid19 segera kedokter';
+    }
     output.push(perOrang);
     return output;
 }
-console.log(cek('Naufal', 100, listGejalaPasien, listGejalaCovid));
+
+// let pasien1 = input('Naufal', listGejalaPasien, listGejalaCovid);
+// console.log(pasien1);
