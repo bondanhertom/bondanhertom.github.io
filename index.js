@@ -65,26 +65,43 @@ document.getElementById('submitGejala').addEventListener("click", function() {
     let data = input(username, gejala, listGejalaCovid, listGejalaCovid);
 
     // Ubah message
+    changeMessage(data);
+
+    // Buat table data
+    appendTableData(data);
+})
+
+function deleteItem() {
+    let select = document.getElementById('tbody');
+    select.removeChild(select.lastChild);
+}
+
+function changeMessage(data) {
     document.getElementById('message').innerText = data[0].message;
     document.getElementById('result').removeAttribute("style");
     document.getElementById('result').style.marginTop = '10px';
+}
 
-    // Buat table data
+function appendTableData(data) {
     const tr = document.createElement("tr");
     const name = document.createElement("td");
     const nameText = document.createTextNode(data[0].name);
     const persentase = document.createElement("td");
     const namePresentase = document.createTextNode(`${data[0].persentase}%`);
     const action = document.createElement("td");
-    const nameAction = document.createTextNode("Delete");
+    const deleteButton = document.createElement("button");
+    deleteButton.textContent = 'Delete';
+    deleteButton.classList.add("deleteButton");
+    deleteButton.setAttribute('id','deleteItem');
+    deleteButton.setAttribute("onclick","deleteItem()");
     name.appendChild(nameText);
     persentase.appendChild(namePresentase);
-    action.appendChild(nameAction);
+    action.appendChild(deleteButton);
     tr.appendChild(name);
     tr.appendChild(persentase);
     tr.appendChild(action);
     document.getElementById("tbody").appendChild(tr);
-})
+}
 
 function input(name, listGejalaPasien, listGejalaCovid) {
     let output = [];
