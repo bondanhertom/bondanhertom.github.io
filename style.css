@@ -1,0 +1,158 @@
+body {
+    background-color: #0096C7;
+    text-align: center;
+    color: #000;
+}
+
+body, input, button {
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.container {
+    width: 650px;
+    margin: 125px auto;
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+.search-input {
+    padding: 10px;
+    width: 300px;
+    border-color: transparent;
+    border-radius: 5px;
+    background-color: rgb(230, 230, 230);
+    border-bottom: rgb(138, 138, 138) solid 5px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.submit-btn {
+    padding: 10px;
+    width: 100px;
+    border-color: transparent;
+    background-color: #03045E;
+    color: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.delete-btn {
+    padding: 10px;
+    width: 100px;
+    border-color: transparent;
+    background-color: rgb(206, 0, 0);
+    color: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.home {
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+    max-width: 600px;
+}
+
+#buttonLog {
+    padding: 10px;
+    width: 100px;
+    border-color: transparent;
+    background-color: #03045E;
+    color: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#buttonReset {
+    padding: 10px;
+    width: 100px;
+    border-color: transparent;
+    background-color: #03045E;
+    color: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#list {
+background-color: rgb(199, 199, 199);
+}
+
+ul {
+    list-style: none;
+}
+
+#list li {
+text-align: center !important;
+padding: 8px !important;
+margin: 5px 0;
+}
+
+#list li:not(:last-child) {
+    border-bottom: #0096C7 solid 1px
+}
+
+#water {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.nav {
+    list-style: none;
+    height: 75px;
+    padding: 25px;
+    padding-bottom: 0;
+    background-color: #03045E;
+    border-radius: 10px 10px 0 0;
+    margin-bottom: 0;
+}
+
+.nav li p {
+    float: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 47pt;
+    margin: -15px 0;
+    color: #fff;
+    justify-content: center;
+}
+
+.logo {
+    display: block;
+    height: 50px;
+}
+
+.progress-bar {
+    height: 25px;
+    width: 50px;;
+    background-color: grey;
+    margin-right: 5px;
+}
+
+.progress-bar:first-child {
+    border-radius: 5px 0 0 5px;
+}
+
+.progress-bar:last-child {
+    border-radius: 0 5px 5px 0;
+}
+
+#btnStartOver {
+    width: 125px;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+td, th {
+border: 1px solid #dddddd;
+text-align: left;
+padding: 8px;
+}
+
+tr:nth-child(even) {
+background-color: #dddddd;
+}
